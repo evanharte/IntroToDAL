@@ -8,7 +8,7 @@ const port = 3000;
 
 global.DEBUG = true;
 
-const server = http.createServer((request, response) => {
+const server = http.createServer(async (request, response) => {
   if (request.url === "/favicon.ico") {
     response.writeHead(200, { "Content-Type": "image/x-icon" });
     response.end();
@@ -28,7 +28,7 @@ const server = http.createServer((request, response) => {
       response.end("Welcome to the DAL");
       break;
     case "/actors":
-      let theActors = getActors(); // fetch actors from postgresql
+      let theActors = await getActors(); // fetch actors from postgresql
       response.writeHead(200, { "Content-Type": "text/plain" });
       response.end("run getActors()");
       break;
