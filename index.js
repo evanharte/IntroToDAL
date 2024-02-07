@@ -39,6 +39,7 @@ const server = http.createServer(async (request, response) => {
       response.writeHead(200, { "Content-Type": "application/json" });
       response.write(JSON.stringify(theFilms));
       response.end();
+      break;
     default:
       let message = `Route not found: ${request.url}`;
       if (DEBUG) console.log(message);
