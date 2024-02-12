@@ -4,6 +4,7 @@ const dal = require("./pdb");
 var getAllFilmsForAllActors = function () {
   if (DEBUG) console.log("films.dal.getFilms()");
   return new Promise(function (resolve, reject) {
+    // using views in postgresql to simplify the query
     const sql = "SELECT * FROM actor_films WHERE last_name = 'Chase';";
 
     dal.query(sql, [], function (err, result) {
