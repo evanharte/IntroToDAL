@@ -23,7 +23,7 @@ var getActors = function () {
 
 var getActorById = function (theId) {
   if (DEBUG) console.log("actors.dal.getActorById()");
-  console.log(`the actors id is ${theId}`);
+  if (DEBUG) console.log(`the actors id is ${theId}`);
 
   return new Promise(function (resolve, reject) {
     const sql =

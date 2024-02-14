@@ -30,4 +30,4 @@ var addFilm = function () {
   if (DEBUG) console.log("films.dal.addFilm()");
 };
 
-module.exports = { getAllFilmsForAllActors };
+module.exports = { getAllFilmsForAllActors, getFilmByID, addFilm };
