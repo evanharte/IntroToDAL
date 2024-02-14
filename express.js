@@ -3,7 +3,10 @@ const express = require("express");
 const app = express();
 
 const { getActors, getActorById } = require("./services/actors.dal");
-const { getAllFilmsForAllActors } = require("./services/films.dal");
+const {
+  getAllFilmsForAllActors,
+  getFilmByID,
+} = require("./services/films.dal");
 
 const PORT = 3000;
 
@@ -52,6 +55,14 @@ app.get("/films", async (request, response) => {
   if (DEBUG) console.log("/films route was accessed.");
   let theActors = await getAllFilmsForAllActors();
   response.write(JSON.stringify(theActors));
+  response.end();
+});
+
+app.get("/films/:id", async (request, response) => {
+  if (DEBUG) console.log("/films/:id route was accessed.");
+  let theFilm = await getFilmByID(request.params.id);
+  response.writeHead(200, { "Content-Type": "application/json" });
+  response.write(JSON.stringify(theFilm));
   response.end();
 });
 
